@@ -2,7 +2,14 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @search = Post.search do
+      keywords params[:Search]
+    end
+    #@search = Sunspot.search(Post, Comment) do
+    #  keywords params[:Search], :fields => [:title, :content, :comment]
+    #end
+
+    @posts = @search.results
 
     respond_to do |format|
       format.html # index.html.erb

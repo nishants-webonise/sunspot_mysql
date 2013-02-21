@@ -1,5 +1,10 @@
 <h1>Listing posts</h1>
 
+<%= form_tag posts_path, :method => :get do %>
+<%= text_field_tag 'Search' %>
+<%= submit_tag "Search" %>
+<% end %>
+
 <table>
   <tr>
     <th>Title</th>
